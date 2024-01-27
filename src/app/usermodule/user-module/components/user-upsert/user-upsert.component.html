@@ -1,0 +1,99 @@
+<mat-card class="mat-elevation-z5 card">
+  <form [formGroup]="userForm" (ngSubmit)="onUserForm()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="first_name"
+        id="first_name"
+        placeholder="Ex. gaurav"
+      />
+      <mat-error *ngIf="f['first_name'].hasError('required')">
+        First Name is <strong>required</strong>
+      </mat-error>   
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label> Last Name </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="last_name"
+        id="last_name"
+        placeholder="Ex. sonawane"
+      />
+      <mat-error *ngIf="f['last_name'].hasError('required')">
+        Last Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label> Email </mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="email"
+        id="email"
+        placeholder="Ex. gaurav@gmail.com"
+      />
+      <mat-error *ngIf="f['email'].hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label> Address </mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="address"
+        id="address"
+        placeholder="Ex. kopargaon"
+      />
+      <mat-error *ngIf="f['address'].hasError('required')">
+        Address is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label> Phone Number </mat-label>
+      <input
+        matInput
+        type="number"
+        id="phone"
+        formControlName="phone"
+        placeholder="Ex. 9359926599"
+      />
+      <mat-error *ngIf="f['phone'].hasError('required')">
+        phone is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <div class="text-right">
+      <button
+        [disabled]="userForm.invalid"
+        mat-raised-button
+        class="mr-2"
+        *ngIf="isBtnShow"
+        type="submit"
+        color="primary"
+      >
+        Add User
+      </button>
+      <button
+      mat-raised-button
+      class="mr-2"
+      *ngIf="!isBtnShow"
+      (click)="onUpdateUser()"
+      type="button"
+      color="primary"
+    >
+      Update User
+    </button>
+      <button
+      mat-raised-button
+      type="button"
+      color="accent"
+      (click)="onCancel()"
+      >
+      Close
+    </button>
+    </div>
+  </form>
+</mat-card>
